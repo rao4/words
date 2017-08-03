@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
@@ -34,7 +34,7 @@ namespace Words
                 int value = 0;
                 foreach(char c in word.ToLower())
                 {
-                    value = value + getNumericValue(c);
+                    value += Convert.ToInt32(c) - 96;
                 }
 
                 if (value == 100) { Console.WriteLine(word); }
@@ -43,22 +43,6 @@ namespace Words
             Console.SetOut(oldOut);
             writer.Close();
             ostrm.Close();
-
-            Console.ReadKey();
-        }
-
-        private static int getNumericValue(char c)
-        {
-            try
-            {
-                alphabet letter = (alphabet)Enum.Parse(typeof(alphabet), c.ToString());
-                return (int)letter;
-            }catch (Exception ex)
-            {
-                return 0;
-            }
-        }                          
+        }                             
     }
-
-    enum alphabet { none, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z };
 }
